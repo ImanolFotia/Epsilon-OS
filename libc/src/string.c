@@ -32,6 +32,23 @@ int memcmp(const void* aptr, const void* bptr, size_t size) {
 	return 0;
 }
 
+bool strcmp(const char* astr, const char* bstr)
+{
+	int lena = strlen(astr);
+	int lenb = strlen(astr);
+	
+	if(lena != lenb)
+		return false;
+	
+	for(int i = 0; i < lena; i++)
+	{
+		if(astr[i] != bstr[i])
+			return false;
+	}
+
+	return true;
+}
+
 void* memset(void* bufptr, int value, size_t size) {
 	unsigned char* buf = (unsigned char*) bufptr;
 	for (size_t i = 0; i < size; i++)

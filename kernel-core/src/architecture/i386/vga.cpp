@@ -6,7 +6,7 @@ const size_t vga::VGA_HEIGHT = 25;
 
 uint16_t* const vga::VGA_MEMORY = (uint16_t*) 0xB8000;
 
-uint8_t vga::vga_entry_color(enum vga_color fg, enum vga_color bg) {
+uint8_t vga::vga_entry_color(vga_color fg, vga_color bg) {
 	return fg | bg << 4;
 }
 

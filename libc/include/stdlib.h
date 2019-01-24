@@ -2,6 +2,7 @@
 #define STDLIB_H
  
 #include <sys/cdefs.h>
+#include <stddef.h>
  
 #ifdef __cplusplus
 extern "C" {
@@ -11,7 +12,10 @@ __attribute__((__noreturn__))
 void abort(void);
 
 int atoi(const char**);
-const char* itoa(int val);
+char* itoa(int val, char res[]);
+const char* ftoa(float val, int);
+
+char* malloc(size_t len);
  
 #ifdef __cplusplus
 }

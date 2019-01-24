@@ -13,6 +13,8 @@ EXEC_PREFIX?=$(PREFIX)
 BOOTDIR?=$(EXEC_PREFIX)/boot
 INCLUDEDIR?=$(PREFIX)/include
 
+CFLAGS_NASM:=$(CFLAGS) -Wall
+CPPFLAGS_NASM:=$(CPPFLAGS_NASM) -D__is_kernel -Iinclude
 CFLAGS:=$(CFLAGS) -ffreestanding -Wall -Wextra
 CPPFLAGS:=$(CPPFLAGS) -D__is_kernel -Iinclude
 LDFLAGS:=$(LDFLAGS)
@@ -49,7 +51,7 @@ $(ARCHDIR_INC)/crtend.o \
 $(ARCHDIR_INC)/crtn.o \
 
 .PHONY: all clean install install-headers install-kernel
-.SUFFIXES: .o .c .S
+.SUFFIXES: .o .c .S .asm
 
 all: myos.kernel
 
@@ -68,6 +70,9 @@ $(ARCHDIR_INC)/crtbegin.o $(ARCHDIR_INC)/crtend.o:
 
 .S.o:
 	$(CC) -MD -c $< -o $@ $(CFLAGS) $(CPPFLAGS)
+
+.asm.o:
+	nasm -f elf $< -o $@ $(CFLAGS_NASM)
 
 clean:
 	rm -f myos.kernel

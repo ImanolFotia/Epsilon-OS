@@ -15,6 +15,7 @@ export LIBDIR=$EXEC_PREFIX/lib
 export INCLUDEDIR=$PREFIX/include
 
 export CFLAGS='-O2 -g'
+export CPPFLAGS_NASM='-g -O2 -w -fno-stack-protector -O0 -m32 --std=c++11 -fno-rtti -nostdlib -nodefaultlibs'
 export CPPFLAGS=' -g -O2 -w -trigraphs -fno-builtin  -fno-exceptions -fno-stack-protector -O0 -m32 --std=c++11 -fno-rtti -nostdlib -nodefaultlibs '
 
 # Configure the cross-compiler to use the desired system root.

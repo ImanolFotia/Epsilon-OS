@@ -62,7 +62,7 @@ int printf(const char* restrict format, ...) {
  
 		const char* format_begun_at = format++;
  
-		if (*format == 'i' || *format == 'd') {
+		if (*format == 'i' || *format == 'l') {
 			format++;
 			int c = va_arg(parameters, int /* char promotes to int */);
 			if (!maxrem) {
@@ -70,7 +70,8 @@ int printf(const char* restrict format, ...) {
 				return -1;
 			}
 			
-			char* str = (char*) itoa(c);
+			char* str;
+			itoa(c, str);
 			if (!print(str, strlen(str)))
 				return -1;
 			written++;
@@ -87,14 +88,27 @@ int printf(const char* restrict format, ...) {
 			written += len;
 		} else if (*format == 'c') {
 			format++;
-			char str = (char) va_arg(parameters, char);
+			int c = (int) va_arg(parameters, int);
 			if (!maxrem) {
 				// TODO: Set errno to EOVERFLOW.
 				return -1;
 			}
-			if (!print(((char*)str), 1))
+			if (!putchar(c))
 				return -1;
 			written += 1;
+
+		} else if (*format == 'f' || *format == 'd') {
+			format++;
+			double c = va_arg(parameters, double /* char promotes to double */);
+			if (!maxrem) {
+				// TODO: Set errno to EOVERFLOW.
+				return -1;
+			}
+			
+			const char* str = ftoa((float)c, 4);
+			if (!print(str, strlen(str)))
+				return -1;
+			written++;
 		} else {
 			format = format_begun_at;
 			size_t len = strlen(format);
