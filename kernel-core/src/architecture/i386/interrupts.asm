@@ -27,7 +27,7 @@ _asm_int_%1:
 	SAVE_REGS
 	push %1
 	call isr_default_int
-	pop eax	;;a enlever sinon
+	pop eax	
 	mov al,0x20
 	out 0x20,al
 	RESTORE_REGS
@@ -38,7 +38,7 @@ extern isr_GP_exc, isr_PF_exc
 global _asm_syscalls, _asm_exc_GP, _asm_exc_PF
 _asm_syscalls:
 	SAVE_REGS
-	push eax                 ; transmission du numero d'appel
+	push eax                 
 	call do_syscalls
 	pop eax
 	cli
