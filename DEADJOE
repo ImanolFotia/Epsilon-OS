@@ -1,0 +1,14 @@
+
+*** These modified files were found in JOE when it aborted on Thu Oct 10 11:05:07 2019
+*** JOE was aborted because the terminal closed
+
+*** File '(Unnamed)'
+Makefile
+/home/karambit/Documents/kernel/.git/MERGE_MSG
+/home/karambit/Documents/kernel/.git/MERGE_MSG
+
+*** File '* Startup Log *'
+Processing '/etc/joe/editorrc'...
+Processing '/etc/joe/ftyperc'...
+Finished processing /etc/joe/ftyperc
+Finished processing /etc/joe/editorrc
