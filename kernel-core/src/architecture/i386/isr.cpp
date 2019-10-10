@@ -6,13 +6,13 @@
 #include <kernel/keyboard.h>
 
 void isr_default_int(int id){
-
+	keyboard _keyboard;
 	switch(id){
 		case 0:
 			printf("Division by zero OMEGALUL\n");
 			break;
 		case 1:
-			handle_keyboard();
+			_keyboard.handle_keyboard();
 			break;
 		default:
 			printf("Division by zero OMEGALUL\n");

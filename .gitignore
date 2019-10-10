@@ -1,0 +1,5 @@
+myos.iso
+*.kernel
+*.iso
+*.o
+*.a
