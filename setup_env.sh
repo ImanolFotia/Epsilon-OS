@@ -1,1 +1,2 @@
- export PATH="$HOME/opt/cross/bin:$PATH"
+#!/bin/bash
+export PATH="$HOME/opt/cross/bin:$PATH"

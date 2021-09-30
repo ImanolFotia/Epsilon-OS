@@ -30,9 +30,14 @@ CPPFLAGS:=$(CPPFLAGS) $(KERNEL_ARCH_CPPFLAGS)
 LDFLAGS:=$(LDFLAGS) $(KERNEL_ARCH_LDFLAGS)
 LIBS:=$(LIBS) $(KERNEL_ARCH_LIBS)
 
+
+include ./src/make.config
+
 KERNEL_OBJS=\
 $(KERNEL_ARCH_OBJS) \
+$(KERNEL_SRC_OBJS) \
 src/kernel.o \
+
 
 OBJS=\
 $(ARCHDIR_INC)/crti.o \
